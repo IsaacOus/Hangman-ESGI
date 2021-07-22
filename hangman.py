@@ -1,12 +1,13 @@
 import random
 import string
+
 import words
 
 
 class Hangman:
     def __init__(self):
-        self.pickedWord = words.get_random_word().upper()  # Mot à deviner
-        self._pickedWord_letters = set(self.pickedWord)  # Les lettres qui composent le mot
+        self._pickedWord = words.get_random_word().upper()  # Mot à deviner
+        self._pickedWord_letters = set(self._pickedWord)  # Les lettres qui composent le mot
         self._alphabet = set(string.ascii_uppercase)
         self._used_letter = set()
         self._hangman_status = 0
@@ -18,11 +19,10 @@ class Hangman:
         self._hangman_status = hangman_status
 
     def start_game(self):
-        print(self.pickedWord)
         while len(self._pickedWord_letters) > 0 and self._hangman_status < 6:
-            print('Status', self._hangman_status)
+            print(self._hangman_status)
             print('User letter : ', ' '.join(self._used_letter))
-            print('Current word : ', [letter if letter in self._used_letter else '-' for letter in self.pickedWord])
+            print('Current word : ', [letter if letter in self._used_letter else '-' for letter in self._pickedWord])
 
             user_letter = input('Guess a letter : ').upper()
             if user_letter in self._alphabet - self._used_letter:
@@ -41,12 +41,7 @@ class Hangman:
         else:
             print("GG !")
 
-        print("The word was " + self.pickedWord)
-
-    @property
-    def used_letter(self):
-        return self._used_letter
-
+        print("The word was " + self._pickedWord)
 
 if __name__ == '__main__':
     h = Hangman()
