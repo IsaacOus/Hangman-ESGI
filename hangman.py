@@ -1,8 +1,8 @@
 import random
 import string
 
+import drawcli
 import words
-
 
 class Hangman:
     def __init__(self):
@@ -21,6 +21,7 @@ class Hangman:
     def start_game(self):
         while len(self._pickedWord_letters) > 0 and self._hangman_status < 6:
             print(self._hangman_status)
+            print(drawcli.hangman_draw[self._hangman_status])
             print('User letter : ', ' '.join(self._used_letter))
             print('Current word : ', [letter if letter in self._used_letter else '-' for letter in self._pickedWord])
 
@@ -38,6 +39,7 @@ class Hangman:
                 print('Invalid letter')
         if self._hangman_status == 6:
             print("No more life")
+            print(drawcli.hangman_draw[self._hangman_status])
         else:
             print("GG !")
 
