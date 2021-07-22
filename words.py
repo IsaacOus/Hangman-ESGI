@@ -23,4 +23,3 @@ def get_random_word():
 
 
 loadWordsToFile()
-print(get_random_word())
