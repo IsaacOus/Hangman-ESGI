@@ -17,8 +17,23 @@ FPS = 60
 run = True
 clock = pygame.time.Clock()
 
+<<<<<<< Updated upstream
 while run:
     game = hangman.Hangman()
+=======
+
+game = hangman.Hangman()
+
+
+
+# Draw word
+display_word = [letter if letter in game.used_letter else '-' for letter in game.pickedWord]
+
+# TODO Draw function
+
+while run:
+    pygame.event.get()
+>>>>>>> Stashed changes
     clock.tick(FPS)
     window.fill((255, 255, 255))
     window.blit(images[game.get_hangman_status()], (0, 0))
@@ -28,5 +43,7 @@ while run:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run = False
+
+    game.start_game()
 
 pygame.quit()
